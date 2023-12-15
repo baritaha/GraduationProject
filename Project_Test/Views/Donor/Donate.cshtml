@@ -1,0 +1,112 @@
+﻿@model Project_Test.Models.ViewModels.DonateViewModel
+
+@{
+    ViewData["Title"] = "Donate";
+
+}
+<style>
+    body{
+        background-image: url('@Url.Content("~/assets/unit2.png")');
+        background-size: cover;
+        background-repeat:no-repeat;
+        color:black;
+        font-weight: bold;
+    }
+    .do{
+        text-align:center;
+        color:crimson;
+        font-weight: bold;
+
+    }
+    .do:hover{
+        color:darkred;
+    }
+</style>
+
+    <body>
+<h1 class="do">Donation Page</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Donate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Donor_Location" class="control-label"></label>
+                        <select asp-for="Donor_Location" class="form-control">
+                            <option>--Select a blood bank--</option>
+                            @foreach (var bank in Model.BloodBanks)
+                            {
+                                <option>@bank.HospitalName</option>
+                            }
+                        </select>
+                        <span asp-validation-for="Donor_Location" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Patient_Name" class="control-label"></label>
+                        <input asp-for="Patient_Name" class="form-control" />
+                        <span asp-validation-for="Patient_Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Patient_Age" class="control-label"></label>
+                        <input asp-for="Patient_Age" class="form-control" />
+                        <span asp-validation-for="Patient_Age" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Patient_Gender" class="control-label"></label>
+                        <select asp-for="Patient_Gender" class="form-control">
+                            <option selected>Default</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                        <span asp-validation-for="Patient_Gender" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Patient_BloodType" class="control-label"></label>
+                        <select asp-for="Patient_BloodType" class="form-control">
+                            <option selected>Default</option>
+                            <option>A+</option>
+                            <option>A-</option>
+                            <option>B+</option>
+                            <option>B-</option>
+                            <option>O+</option>
+                            <option>O-</option>
+                            <option>AB+</option>
+                            <option>AB-</option>
+                        </select>
+                        <span asp-validation-for="Patient_BloodType" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Patient_Hospital" class="control-label"></label>
+                        <select asp-for="Patient_Hospital" class="form-control">
+                            <option>--Select a blood bank--</option>
+                            @foreach (var bank in Model.BloodBanks)
+                            {
+                                <option>@bank.HospitalName</option>
+                            }
+                        </select>
+                        <span asp-validation-for="Patient_Hospital" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Patient_NationalityNum" class="control-label"></label>
+                        <input asp-for="Patient_NationalityNum" class="form-control" />
+                        <span asp-validation-for="Patient_NationalityNum" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Diseases" class="control-label"></label>
+                        <input asp-for="Diseases" class="form-control" />
+                        <span asp-validation-for="Diseases" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <a class="btn btn-secondary" asp-action="Home_Donor" asp-controller="Donor">Cancel</a>
+                    </div>
+</form>
+    </div>
+
+</div>
+</body>
+
+

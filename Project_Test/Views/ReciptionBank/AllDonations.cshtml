@@ -1,0 +1,84 @@
+﻿@model List<Donation_Box>
+
+@{
+    ViewData["Title"] = "AllDonations";
+    Layout = "~/Views/Shared/Bank_Layout.cshtml";
+}
+
+<h2>AllDonations</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Donor Email
+            </th>
+            <th>
+                Donor BloodType
+            </th>
+            <th>
+                Patient Name
+            </th>
+            <th>
+                Patient Age
+            </th>
+            <th>
+                Patient Gender
+            </th>
+            <th>
+                Patient BloodType
+            </th>
+            <th>
+                Patient Hospital
+            </th>
+            <th>
+                Patient NationalityNum
+            </th>
+            <th>
+                Diseases
+            </th>
+            <th>
+                Donation Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Donor_Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Donor_BloodType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient_Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient_Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient_BloodType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient_Hospital)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient_NationalityNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diseases)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Donation_Status)
+            </td>
+
+        </tr>
+}
+    </tbody>
+</table>

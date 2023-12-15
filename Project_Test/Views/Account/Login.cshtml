@@ -1,0 +1,161 @@
+﻿@model Project_Test.Models.AdminLogin
+
+@{
+    ViewData["Title"] = "Login_Donor";
+    Layout = null;
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-image: url('@Url.Content("~/assets/admin2.png")');
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: mediumblue; 
+        }
+
+        hr {
+            border-color: cornflowerblue;
+            margin-bottom: 30px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+
+        .col-md-4 {
+            width: 400px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            font-size: 18px;
+            color: white; 
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-color: black;
+            border-radius: 3px;
+            font-size: 16px;
+            background-color: transparent;
+            color: #333; 
+            transition: background-color 0.3s ease-in-out; 
+        }
+
+            .form-control:focus {
+                outline: none;
+                box-shadow: 0 0 5px rgba(255, 255, 255, 0.9);
+            }
+
+            .form-control:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+
+        .text-danger {
+            color: #FF5252; 
+        }
+
+        .form-check {
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            background-color: #4CAF50;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+            .btn-primary:hover {
+                background-color: cornflowerblue;
+            }
+
+        .btn-secondary {
+            background-color: #999;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+            .btn-secondary:hover {
+                background-color: #777;
+            }
+
+        .emoticon {
+            font-size: 28px;
+            margin-right: 5px;
+        }
+
+        .reg-hover {
+            color: crimson;
+        }
+
+        .bac {
+            background-image: url('~/');
+        }
+
+        .form-control:hover {
+            background-color: rgba(255, 255, 255, 0.5); 
+        }
+
+        .btn-blue {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Login Admin Page <i class="fas fa-user-cog"></i></h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Login">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label "></label>
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+               
+                <div class="form-group">
+                    <input type="submit" value="Sign In" class="btn btn-primary btn-blue" />
+
+                    <a class="btn btn-secondary" asp-action="MyTemp" asp-controller="Home">Back <span class="emoticon">👈</span></a><br /><vr></vr>
+
+                </div>
+              
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

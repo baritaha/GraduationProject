@@ -1,0 +1,158 @@
+﻿@model Project_Test.Models.ViewModels.LoginDonorViewModel
+
+@{
+    ViewData["Title"] = "Login_Donor";
+    Layout = null;
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            background-image: url('@Url.Content("~/assets/d2.png")');
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #FF0000; /* Red color for the title */
+        }
+
+        hr {
+            border-color: crimson;
+            margin-bottom: 30px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+
+        .col-md-4 {
+            width: 400px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            font-size: 18px;
+            color: white; /* Dark color for the label */
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-color: black;
+            border-radius: 3px;
+            font-size: 16px;
+            background-color: transparent;
+            color: #333; /* Dark color for the input text */
+            transition: background-color 0.3s ease-in-out; /* Add transition for smooth hover effect */
+        }
+
+            .form-control:focus {
+                outline: none;
+                box-shadow: 0 0 5px rgba(255, 255, 255, 0.9);
+            }
+
+            .form-control:hover {
+                background-color: rgba(255, 255, 255, 0.2); /* Set the background color on hover */
+            }
+
+        .text-danger {
+            color: #FF5252; /* Red color for the validation error message */
+        }
+
+        .form-check {
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            background-color: #4CAF50;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+            .btn-primary:hover {
+                background-color: #45A049;
+            }
+
+        .btn-secondary {
+            background-color: #999;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+            .btn-secondary:hover {
+                background-color: #777;
+            }
+
+        .emoticon {
+            font-size: 28px;
+            margin-right: 5px;
+        }
+
+        .reg-hover {
+            color: crimson;
+        }
+
+        .bac {
+            background-image: url('~/');
+        }
+
+        .form-control:hover {
+            background-color: rgba(255, 255, 255, 0.5); /* Set the background color on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Login Donor Page <span class="emoticon">😊</span></h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Login_Donor">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label "></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RememberMe" /> @Html.DisplayNameFor(model => model.RememberMe)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Sign In" class="btn btn-primary" />
+                    <a class="btn btn-secondary" asp-action="MyTemp" asp-controller="Home">Back <span class="emoticon">👈</span></a><br /><vr></vr>
+
+                </div>
+                <br /> <a asp-action="Register_Donor" asp-controller="Account" class="reg">I Don't Have An Account</a>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

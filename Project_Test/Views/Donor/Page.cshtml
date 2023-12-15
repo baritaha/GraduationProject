@@ -1,0 +1,21 @@
+﻿@model Donor
+@{
+    ViewData["Title"] = "Page";
+   
+}
+<style>
+   span{
+       color:crimson;
+        font-family: 'Bauhaus 93';
+   }
+   h1{
+       font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      
+   }
+</style>
+<div>
+    <h1><span>Donated Successfully</span></h1>
+    <h1>Thank you<span> @Model.FirstName @Model.LastName</span> for donation</h1>
+</div>
+<a class="btn btn-secondary" asp-action="Home_Donor" asp-controller="Donor">Back</a>
+

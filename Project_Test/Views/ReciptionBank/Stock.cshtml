@@ -1,0 +1,204 @@
+﻿@model List<Blood>
+
+@{
+    ViewData["Title"] = "Stock";
+    Layout = "~/Views/Shared/Bank_Layout.cshtml";
+}
+<head>
+    <title>blood store</title>
+    <link rel="stylesheet" type="text/css" href="~/Admin-Dashboard/css/styleUnit.css">
+    <style>
+        .title{
+            text-align:center;
+            color:cornflowerblue;
+        }
+    </style>
+</head>
+
+<h2 class="title">
+    <i class="fas fa-flask"></i>
+    blood store
+</h2>
+<div class="row">
+    <div class="col-lg-3 col-md-6">
+        <div class="blood-vial">
+            <span class="blood-type">A</span>
+            <div class="blood-content">
+                <div class="blood-count">
+                    <div class="huge" id="unitCount">@Model.Where(d => d.Type == "A").Count()</div>
+                    <div id="unitText">Unit</div>
+                </div>
+                <div class="blood-fluid"></div>
+                <div class="blood-footer">
+
+                    <span class="blood-hover-text">Type Of<strong> A</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="blood-vial">
+            <span class="blood-type">A+</span>
+            <div class="blood-content">
+                <div class="blood-count">
+                    <div class="huge" id="unitCount">@Model.Where(d => d.Type == "A+").Count()</div>
+                    <div id="unitText">Unit</div>
+                </div>
+                <div class="blood-fluid"></div>
+                <div class="blood-footer">
+                    
+                    <span class="blood-hover-text">Type Of <strong>A+</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="blood-vial">
+            <span class="blood-type">B+</span>
+            <div class="blood-content">
+                <div class="blood-count">
+                    <div class="huge" id="unitCount">@Model.Where(d => d.Type == "B+").Count()</div>
+                    <div id="unitText">Unit</div>
+                </div>
+                <div class="blood-fluid"></div>
+                <div class="blood-footer">
+                    
+                    <span class="blood-hover-text">Type Of <strong>B+</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="col-lg-3 col-md-6">
+        <div class="blood-vial">
+            <span class="blood-type">B-</span>
+            <div class="blood-content">
+                <div class="blood-count">
+                    <div class="huge" id="unitCount">@Model.Where(d => d.Type == "B-").Count()</div>
+                    <div id="unitText">Unit</div>
+                </div>
+                <div class="blood-fluid"></div>
+                <div class="blood-footer">
+
+                    <span class="blood-hover-text">Type Of <strong>B-</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="blood-vial">
+            <span class="blood-type">O+</span>
+            <div class="blood-content">
+                <div class="blood-count">
+                    <div class="huge" id="unitCount">@Model.Where(d => d.Type == "O+").Count()</div>
+                    <div id="unitText">Unit</div>
+                </div>
+                <div class="blood-fluid"></div>
+                <div class="blood-footer">
+
+                    <span class="blood-hover-text">Type Of <strong>O+</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="blood-vial">
+            <span class="blood-type">O-</span>
+            <div class="blood-content">
+                <div class="blood-count">
+                    <div class="huge" id="unitCount">@Model.Where(d => d.Type == "O-").Count()</div>
+                    <div id="unitText">Unit</div>
+                </div>
+                <div class="blood-fluid"></div>
+                <div class="blood-footer">
+
+                    <span class="blood-hover-text">Type Of <strong>O-</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="blood-vial">
+            <span class="blood-type">AB+</span>
+            <div class="blood-content">
+                <div class="blood-count">
+                    <div class="huge" id="unitCount">@Model.Where(d => d.Type == "AB+").Count()</div>
+                    <div id="unitText">Unit</div>
+                </div>
+                <div class="blood-fluid"></div>
+                <div class="blood-footer">
+
+                    <span class="blood-hover-text">Type Of <strong>AB+</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="blood-vial">
+            <span class="blood-type">AB-</span>
+            <div class="blood-content">
+                <div class="blood-count">
+                    <div class="huge" id="unitCount">@Model.Where(d => d.Type == "AB-").Count()</div>
+                    <div id="unitText">Unit</div>
+                </div>
+                <div class="blood-fluid"></div>
+                <div class="blood-footer">
+
+                    <span class="blood-hover-text">Type Of <strong>AB-</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p>
+    <a asp-action="Add" asp-controller="ReciptionBank" class="btn btn-danger">Add New Blood Unit</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Type
+            </th>
+            <th>
+                Code
+            </th>
+            <th>
+                Start Date
+            </th>
+            <th>
+                Expire Date
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Start_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Expire_Date)
+                </td>
+                <td>
+                    <a class="b1" asp-action="EditBloodUnit" asp-controller="ReciptionBank" asp-route-id="@item.BloodID">
+                        Edit
+                    </a> |
+                    <form method="post" asp-action="DeleteBloodUnit" asp-controller="ReciptionBank" asp-route-id="@item.BloodID">
+                        <button class="b2">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

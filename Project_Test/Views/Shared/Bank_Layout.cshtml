@@ -1,0 +1,237 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<IdentityUser> signInManager;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <title>Admin-Dashboard</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+
+
+
+    <!-- Notify -->
+    <link href="~/lib/toastr/toastr.min.css" rel="stylesheet" />
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/toastr/toastr.min.js"></script>
+    <script src="~/lib/n-toast-notify/n-toast-notify.js"></script>
+
+
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Admin-Dashboard/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="~/Admin-Dashboard/css/metisMenu.min.css" rel="stylesheet">
+    <!-- Morris Charts JavaScript -->
+    <script src="~/Admin-Dashboard/js/raphael.min.js"></script>
+    <script src="~/Admin-Dashboard/js/morris.min.js"></script>
+    <script src="~/Admin-Dashboard/js/morris-data.js"></script>
+    <!-- Custom CSS -->
+    <link href="~/Admin-Dashboard/css/startmin.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="~/Admin-Dashboard/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+
+        .navbar-brand:hover {
+            color: darkblue;
+        }
+
+        .navbar-inverse .navbar-nav > li > a:hover,
+        .navbar-inverse .navbar-nav > li > a:focus {
+            background-color: #fff;
+            color: darkblue;
+        }
+
+        .dropdown-menu > .active > a,
+        .dropdown-menu > .active > a:hover,
+        .dropdown-menu > .active > a:focus {
+            background-color: #fff;
+            color: darkblue;
+        }
+
+        .dashboard-container {
+            border: 0px solid black; /* Border style */
+            padding: 10px; /* Padding inside the box */
+            text-align: center; /* Center the text */
+            color: blue; /* Change the text color */
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+            .dashboard-container:hover {
+                background-color: lightgray; /* Set background color on hover */
+            }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand" asp-action="ShowHospitalInfo">@User.Identity.Name</a>
+            </div>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+           
+
+            <ul class="nav navbar-right navbar-top-links">
+               
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fas fa-user"></i> <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        
+                            <form method="post" asp-controller="Account" asp-action="Logout">
+                                <button class="btn btn-danger"><i class="fa fa-sign-out fa-fw"></i> Logout</button>
+                            </form>
+                            @*<a asp-action="Logout" asp-controller="Account"> Logout</a>*@
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a asp-action="ShowHospitalInfo" asp-controller="ReciptionBank" class="active">
+                                <i class="fas fa-tachometer-alt"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-user"></i>
+
+                                Create Users                             
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a asp-action="Register_Donor" asp-controller="Account">
+                                        <i class="fas fa-hand-holding-medical"></i>
+
+
+                                        Create Donor
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-action="Register_Driver" asp-controller="ReciptionBank"><i class="fas fa-ambulance"></i>Create Driver</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-table"></i>
+                                Tables
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a asp-action="AllDonors" asp-controller="ReciptionBank">
+                                        <i class="fas fa-hand-holding-medical"></i>
+                                        All Donors
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-action="Donations" asp-controller="ReciptionBank">
+                                        <i class="fas fa-hands-helping"></i>
+                                        Donations
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-action="Stock" asp-controller="ReciptionBank">
+                                        <i class="fas fa-flask"></i>
+                                        Stock
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                 
+                       
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="dashboard-container">
+                            <h1 class="page-header">
+                                <i class="fas fa-hospital-alt"></i>
+
+                                Blood Transfusion Center
+                            </h1>
+                        </div>
+                        @RenderBody()
+                        @{
+                            ViewData["Title"] = "Index";
+                        }
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="~/Admin-Dashboard/js/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Admin-Dashboard/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="~/Admin-Dashboard/js/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="~/Admin-Dashboard/js/startmin.js"></script>
+
+    @await Component.InvokeAsync("NToastNotify")
+    <script>
+        toastr.options.onclick = function () {
+            toastr.options.timeOut = 0;
+            toastr.clear();
+        };
+    </script>
+</body>
+</html>

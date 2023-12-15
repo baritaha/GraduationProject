@@ -1,0 +1,126 @@
+@keyframes bloodFlow {
+    0% {
+        height: 0%;
+       
+    }
+
+    50% {
+        height: 50%;
+       
+    }
+
+    100% {
+        height: 0%;
+    }
+}
+
+.blood-vial {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    padding: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+    .blood-vial:hover {
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+.blood-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.blood-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.blood-count {
+    margin-bottom: 10px;
+}
+
+.huge {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+}
+
+.blood-fluid {
+    width: 100%;
+    height: 0;
+    background-color: #d63031;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: bloodFlow 2s infinite;
+}
+
+.blood-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.blood-type {
+    font-weight: bold;
+}
+
+.blood-hover-text {
+    display: none;
+}
+
+.blood-vial:hover .blood-type {
+    display: none;
+}
+
+.blood-vial:hover .blood-hover-text {
+    display: block;
+    font-weight: bold;
+}
+
+#unitCount,
+#unitText {
+    position: relative;
+    z-index: 1;
+}
+table.table tbody tr:hover {
+    background-color: lightpink;
+}
+.blood-vial:hover {
+    border-color: red; /* Replace with your desired outline color */
+}
+
+.blood-vial a.b1,
+.blood-vial button.b2 {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid red; /* Replace with your desired outline color */
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+    .b1:hover,
+    .b2:hover {
+        background-color: red; /* Replace with your desired button hover background color */
+        color: white; /* Replace with your desired button hover text color */
+        border-color: red; /* Replace with your desired button hover outline color */
+    }
+    strong{
+        color:red;
+    }
+    .title{
+
+    }
+

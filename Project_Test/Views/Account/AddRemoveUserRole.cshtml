@@ -1,0 +1,31 @@
+﻿@model IList<Project_Test.Models.Role.UserRoleViewModel>
+
+@{
+    ViewData["Title"] = "AddRemoveUserRole";
+}
+
+<h1>AddRemoveUserRole</h1>
+
+<form asp-action="AddRemoveUserRole">
+    <div class="card">
+        <div class="card-header">
+            Users in this list
+        </div>
+        <div class="card-body">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <input type="hidden" asp-for="@Model[i].UserId" />
+                <input type="hidden" asp-for="@Model[i].UserName" />
+                <input asp-for="@Model[i].IsSelected" class="form-check-input" />
+                <label asp-for="@Model[i].UserName">
+                    @Model[i].UserName
+                </label>
+                <br />
+            }
+        </div>
+        <div class="card-footer">
+            <input type="submit" value="Save" class="btn btnn-success" />
+            <a asp-action="RolesList" class="btn btn-danger">Cancel</a>
+        </div>
+    </div>
+</form>

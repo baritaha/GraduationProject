@@ -1,0 +1,86 @@
+﻿@model List<Donation_Box>
+
+@{
+    ViewData["Title"] = "Accepted_Donation";
+    Layout = "~/Views/Shared/Bank_Layout.cshtml";
+}
+
+<h1>Accepted Donations</h1>
+
+
+
+@if (Model.Where(d=>d.Donation_Status==Donation_Box.Status.Accepted).Any()) { 
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Donor Email
+            </th>
+            <th>
+                Donor BloodType
+            </th>
+            <th>
+                Patient Name
+            </th>
+            <th>
+                Patient Age
+            </th>
+            <th>
+                Patient Gender
+            </th>
+            <th>
+                Patient BloodType
+            </th>
+            <th>
+                Patient Hospital
+            </th>
+            <th>
+                Patient NationalityNum
+            </th>
+            <th>
+                Diseases
+            </th>
+            <th>
+                Donation Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Where(d => d.Donation_Status == Donation_Box.Status.Accepted)) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Donor_Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Donor_BloodType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient_Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient_Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient_BloodType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient_Hospital)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient_NationalityNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diseases)
+            </td>
+            <td class="text-success">
+                @Html.DisplayFor(modelItem => item.Donation_Status)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+}

@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Home_Donor";
+}
+<style>
+    h1 {
+        color: red; /* Maintain the existing red color */
+    }
+
+    .btn-primary {
+        background-color: #007BFF;
+        border-color: white;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        display: inline-block;
+        margin: 10px;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3; 
+        }
+
+            
+            body{
+        background-image: url('@Url.Content("~/assets/D1.png")');
+        background-repeat: no-repeat;
+        background-size:cover;
+            }
+</style>
+<body>
+<div>
+
+<a asp-action="Profile" asp-controller="Donor" class="btn btn-primary">Profile</a>
+<a asp-action="Donate" asp-controller="Donor" class="btn btn-primary">Donate</a>
+<a asp-action="View_Donations" asp-controller="Donor" class="btn btn-primary">My Donations</a>
+<a asp-action="#" asp-controller="#" class="btn btn-primary">Search Hospital</a>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <br />
+        <br />
+
+</div>
+</body>

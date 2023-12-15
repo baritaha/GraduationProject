@@ -1,0 +1,45 @@
+﻿@model Project_Test.Models.Blood
+
+@{
+    ViewData["Title"] = "EditBloodUnit";
+    Layout = "~/Views/Shared/Bank_Layout.cshtml";
+}
+
+<h2>EditBloodUnit</h2>
+
+<h4>Blood</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditBloodUnit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BloodID" class="control-label"></label>
+                <input asp-for="BloodID" class="form-control" />
+                <span asp-validation-for="BloodID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Type" class="control-label"></label>
+                <input asp-for="Type" class="form-control" />
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Code" class="control-label"></label>
+                <input asp-for="Code" class="form-control" />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Start_Date" class="control-label"></label>
+                <input asp-for="Start_Date" class="form-control" />
+                <span asp-validation-for="Start_Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-primary" />
+                <a class="btn btn-default" asp-action="Stock" asp-controller="ReciptionBank">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

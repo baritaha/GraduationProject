@@ -1,0 +1,204 @@
+﻿@model List<Donation_Box>
+@using NToastNotify
+
+@inject IToastNotification Toast
+
+@{
+    ViewData["Title"] = "AllDonations";
+    Layout = "~/Views/Shared/Bank_Layout.cshtml";
+}
+<style>
+    .d{
+        text-align:center;
+        color:cornflowerblue;
+    }
+</style>
+
+<h2 class="d">
+    <i class="fas fa-hand-holding-heart"></i>
+    Donations
+</h2>
+<div class="row">
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-house-medical"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@Model.Count</div>
+                        <div>Donation</div>
+                    </div>
+                </div>
+            </div>
+            <a asp-action="AllDonations">
+                <div class="panel-footer">
+                    <span class="pull-left">Donations</span>
+                    <span class="pull-right"></span>
+
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-house-medical"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@Model.Count(d => d.Donation_Status == Donation_Box.Status.Accepted)</div>
+                        <div>Accepted Donation</div>
+                    </div>
+                </div>
+            </div>
+            <a asp-action="Accepted_Donation">
+                <div class="panel-footer">
+                    <span class="pull-left">Donation Status</span>
+                    <span class="pull-right"></span>
+
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-house-medical"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@Model.Count(d => d.Donation_Status == Donation_Box.Status.Rejected)</div>
+                        <div>Rejected Donation</div>
+                    </div>
+                </div>
+            </div>
+            <a asp-action="Rejected_Donation">
+                <div class="panel-footer">
+                    <span class="pull-left">Donation Status</span>
+                    <span class="pull-right"></span>
+
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-house-medical"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@Model.Count(d => d.Donation_Status == Donation_Box.Status.Pending)</div>
+                        <div>Pending Donation</div>
+                    </div>
+                </div>
+            </div>
+            <a asp-action="Donations">
+                <div class="panel-footer">
+                    <span class="pull-left">Donation Status</span>
+                    <span class="pull-right"></span>
+
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>
+<hr class="hr" />
+@if (Model.Any(d => d.Donation_Status == Donation_Box.Status.Pending))
+{
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    Donor Email
+                </th>
+                <th>
+                    Donor BloodType
+                </th>
+                <th>
+                    Patient Name
+                </th>
+                <th>
+                    Patient Age
+                </th>
+                <th>
+                    Patient Gender
+                </th>
+                <th>
+                    Patient BloodType
+                </th>
+                <th>
+                    Patient Hospital
+                </th>
+                <th>
+                    Patient NationalityNum
+                </th>
+                <th>
+                    Diseases
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Where(d => d.Donation_Status == Donation_Box.Status.Pending))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Donor_Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Donor_BloodType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Patient_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Patient_Age)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Patient_Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Patient_BloodType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Patient_Hospital)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Patient_NationalityNum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Diseases)
+                    </td>
+                    <td>
+                        @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                        <form asp-action="Accept" asp-controller="ReciptionBank" asp-route-id="@item.DonationID">
+                            <button type="submit" class="btn btn-success">Accept</button>
+
+                        </form>   
+                        <a asp-action="Reject" asp-controller="ReciptionBank" asp-route-id="@item.DonationID" class="btn btn-danger">Reject</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h1 class="text-danger">There is no pending donation</h1>
+}

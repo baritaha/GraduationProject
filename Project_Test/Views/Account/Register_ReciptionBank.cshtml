@@ -1,0 +1,139 @@
+﻿@model Project_Test.Models.ViewModels.RegisterBankViewModel
+
+@{
+    ViewData["Title"] = "Register_ReciptionBank";
+    Layout = null;
+}
+
+<style>
+    body {
+        background-image: url('@Url.Content("~/assets/recepbank.png")');
+        background-size: cover;
+    }
+
+    h1 {
+        color: #fff;
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        border-radius: 4px;
+    }
+
+    .alert-link {
+        color: #007bff;
+    }
+
+    .alert-primary {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        /* Additional Customizations */
+
+        /* Hover effects */
+        .form-group:hover,
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+            color: #fff;
+        }
+
+    .form-control:hover {
+        border-color: #0056b3;
+    }
+
+    .alert-link:hover {
+        color: #0056b3;
+    }
+
+    /* Emphasize labels on hover */
+    .control-label:hover {
+        font-weight: bold;
+    }
+
+    /* Add any additional CSS styles or customizations here */
+</style>
+
+<h1 style="color:dodgerblue">Register For ReciptionBank</h1>
+<p>Have Account? <a asp-action="Login_ReciptionBank" asp-controller="Account" class="alert-link alert-primary">Sign In</a></p>
+
+<hr />
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <form asp-action="Register_ReciptionBank">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <select asp-for="Location" class="form-control">
+                    <option value="">Select Location</option>
+                    <option value="Irbid">Irbid</option>
+                    <option value="Ajloun">Ajloun</option>
+                    <option value="Jerash">Jerash</option>
+                    <option value="Amman">Amman</option>
+                    <option value="Balqa">Balqa</option>
+                    <option value="Zarqa">Zarqa</option>
+                    <option value="Madaba">Madaba</option>
+                    <option value="Karak">Karak</option>
+                    <option value="Tafilah">Tafilah</option>
+                    <option value="Ma'an">Ma'an</option>
+                    <option value="Aqaba">Aqaba</option>
+                </select>
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HospitalName" class="control-label"></label>
+                <input asp-for="HospitalName" class="form-control" />
+                <span asp-validation-for="HospitalName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MinUnits" class="control-label"></label>
+                <input asp-for="MinUnits" class="form-control" />
+                <span asp-validation-for="MinUnits" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaxUnits" class="control-label"></label>
+                <input asp-for="MaxUnits" class="form-control" />
+                <span asp-validation-for="MaxUnits" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Current_Qty" class="control-label"></label>
+                <input asp-for="Current_Qty" class="form-control" />
+                <span asp-validation-for="Current_Qty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="control-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a class="btn btn-secondary" asp-action="MyTemp">Back</a>
+            </div>
+        </form>
+    </div>
+</div>

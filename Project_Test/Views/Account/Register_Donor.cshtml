@@ -1,0 +1,185 @@
+﻿@model Project_Test.Models.ViewModels.RegisterDonorViewModel
+
+@{
+    ViewData["Title"] = "Register_Donor";
+    Layout = null;
+}
+
+<style>
+    body {
+        background-image: url('@Url.Content("~/assets/g8.png")');
+        background-size: cover;
+    }
+
+    h1 {
+        color: #fff;
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    p {
+        color: #fff;
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        border-radius: 4px;
+        transition: border-color 0.3s;
+    }
+
+    .alert-link {
+        color: #007bff;
+    }
+
+    .alert-primary {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        /* Additional Customizations */
+
+        /* Hover effects */
+        .form-group:hover,
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+            color: #fff;
+        }
+
+    .form-control:hover {
+        border-color: #0056b3;
+    }
+
+    .alert-link:hover {
+        color: #0056b3;
+    }
+
+    /* Emphasize labels on hover */
+    .control-label:hover {
+        font-weight: bold;
+    }
+</style>
+
+<h1 style="color:dodgerblue">Register Donor</h1>
+
+<p>Already have an account? <a asp-action="Login_Donor" asp-controller="Account" class="alert-link alert-primary">Sign In</a></p>
+
+<hr />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form asp-action="Register_Donor">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="FirstName" class="control-label"></label>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LastName" class="control-label"></label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label"></label>
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Age" class="control-label"></label>
+                    <input asp-for="Age" class="form-control" />
+                    <span asp-validation-for="Age" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Gender" class="control-label"></label>
+                    <select asp-for="Gender" class="form-control">
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="BloodType" class="control-label"></label>
+                    <select asp-for="BloodType" class="form-control">
+                        <option value="">Select Blood Type</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                    <span asp-validation-for="BloodType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address" class="control-label"></label>
+                    <select asp-for="Address" class="form-control">
+                        <option value="">Select Address</option>
+                        <option value="Irbid">Irbid</option>
+                        <option value="Ajloun">Ajloun</option>
+                        <option value="Jerash">Jerash</option>
+                        <option value="Amman">Amman</option>
+                        <option value="Balqa">Balqa</option>
+                        <option value="Zarqa">Zarqa</option>
+                        <option value="Madaba">Madaba</option>
+                        <option value="Karak">Karak</option>
+                        <option value="Tafilah">Tafilah</option>
+                        <option value="Ma'an">Ma'an</option>
+                        <option value="Aqaba">Aqaba</option>
+                    </select>
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NationalityNum" class="control-label"></label>
+                    <input asp-for="NationalityNum" class="form-control" />
+                    <span asp-validation-for="NationalityNum" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PhoneNumber" class="control-label"></label>
+                    <input asp-for="PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword" class="control-label"></label>
+                    <input asp-for="ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

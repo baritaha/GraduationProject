@@ -1,0 +1,98 @@
+﻿@model List<ReciptionBank>
+@{
+    ViewData["Title"] = "ShowHospitalInfo";
+    Layout = "~/Views/Shared/Bank_Layout.cshtml";
+}
+<style>
+    .h{
+        text-align:center;
+        color:cornflowerblue;
+    }
+</style>
+<h1 class="h">
+    <i class="fas fa-file-medical"></i>
+
+    Blood Bank Information
+</h1>
+
+<div class="row">
+    @if (Model != null)
+    {
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title text-center mb-4">@item.HospitalName</h4>
+                        <div class="card-text text-center">
+                            <p><strong>Minimum Unit:</strong> <span class="min-units">@item.MinUnits</span></p>
+                            <p><strong>Maximum Unit:</strong> <span class="max-units">@item.MaxUnits</span></p>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted text-center">
+                        <i class="fa fa-house-medical"></i>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <h1>No Data Found</h1>
+    }
+</div>
+
+<style>
+    .card {
+        height: 100%;
+        border: 1px solid #e6e6e6;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    .card-title {
+        color: #333;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .card-text {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .min-units {
+        color: #00a7d0;
+        font-weight: bold;
+    }
+
+    .max-units {
+        color: #ff4d4d;
+        font-weight: bold;
+    }
+
+    .card-footer {
+        background-color: #f9f9f9;
+        border-top: 1px solid #e6e6e6;
+        color: #888;
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    .card {
+        height: 100%;
+        border: 1px solid #e6e6e6;
+        border-radius: 10px;
+        background-color: #f2f2f2; /* Updated background color */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+</style>

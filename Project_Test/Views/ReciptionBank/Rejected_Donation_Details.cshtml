@@ -1,0 +1,90 @@
+﻿@model Project_Test.Models.Donation_Box
+
+@{
+    ViewData["Title"] = "Rejected_Donation_Details";
+    Layout = "~/Views/Shared/Bank_Layout.cshtml";
+}
+
+<h2>Rejected_Donation_Details</h2>
+
+<div>
+    <h4>Donation_Box</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Donor_Location)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Donor_Location)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Donor_Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Donor_Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Donor_BloodType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Donor_BloodType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient_Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Patient_Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient_Age)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Patient_Age)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient_Gender)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Patient_Gender)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient_BloodType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Patient_BloodType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient_Hospital)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Patient_Hospital)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient_NationalityNum)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Patient_NationalityNum)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Diseases)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Diseases)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rejection_Reason)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rejection_Reason)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Donation_Status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Donation_Status)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Donations" asp-controller="ReciptionBank">Back</a>
+</div>
